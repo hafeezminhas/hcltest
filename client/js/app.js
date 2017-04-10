@@ -4,10 +4,7 @@
 
 'use strict';
 
-var app = angular.module('hclapp', [
-    'ui.bootstrap',
-    'ui.router'
-]);
+var app = angular.module('hclapp', ['ui.bootstrap', 'ui.router']);
 
 angular.module('hclapp')
 
@@ -25,7 +22,7 @@ angular.module('hclapp')
                 template: '<div ui-view class="fade-in-up"></div>',
                 abstract: true
             }).state('app.home', {
-                url: "/home",
+                url: "",
                 controller: 'HomeCtrl',
                 templateUrl: '/views/home.html'
             });
@@ -33,8 +30,14 @@ angular.module('hclapp')
             $qProvider.errorOnUnhandledRejections(false);
     }])
 
-    .run(['$rootScope', '$state', '$stateParams', '$http', function($rootScope, $state, $stateParams, $http){
+    .run(['$rootScope', '$state', '$stateParams', function($rootScope, $state, $stateParams){
         $rootScope.$state = $state;
         $rootScope.$stateParams = $stateParams;
         //Other Configs if required.
+
+        $rootScope.app = {
+            Name: 'HCL Test',
+            Title: 'Guess the Secret Number',
+            Author: 'minhas.hafeez@gmail.com'
+        };
     }]);

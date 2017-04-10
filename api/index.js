@@ -21,11 +21,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, '../' + 'client')));
 
-/* GET home page */
-app.get('/', function(req, res, next){
-    res.render('index');
-});
-
+/* Guess Routes */
 app.post('api/guess', guessCtrl.CreateGuess);
 app.get('api/guess/play/:num', guessCtrl.CreateGuess);
 
